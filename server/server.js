@@ -42,6 +42,15 @@ const manifest = {
             options: {
                 select: 'boilerplate-api'
             }
+        },
+        {
+            plugin: {
+                register: './bassmaster',
+                options: {
+                    batchEndpoint: '/',
+                    tags: ['bassmaster']
+                }
+            }
         }
     ]
 
@@ -52,7 +61,7 @@ module.exports = manifest;
 // If this is being required, return the manifest.  Otherwise, start the server.
 if (!module.parent) {
 
-    Glue.compose(manifest, { relativeTo: Path.join(__dirname, 'node_modules') }, (err, server) => {
+    Glue.compose(manifest, { relativeTo: Path.join(__dirname, '..', 'node_modules') }, (err, server) => {
 
         if (err) {
             throw err;
